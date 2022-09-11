@@ -3,7 +3,7 @@ package dev.mazurkiewicz.m2do.notes
 import java.time.Instant
 
 class Note(
-    val id: Int,
+    var id: Int,
     val type: NoteType,
     val title: String,
     val content: String,
