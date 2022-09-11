@@ -4,16 +4,16 @@ import java.time.Instant
 
 class Note(
     val id: Int,
-    val type: Int,
+    val type: NoteType,
     val title: String,
     val content: String,
-    val state: Int,
+    val state: NoteState,
     val createdAt: Instant,
     val editedAt: Instant,
     val readonly: Boolean
 ) {
 
-    fun create() {
+    fun duplicate() {
 
     }
 

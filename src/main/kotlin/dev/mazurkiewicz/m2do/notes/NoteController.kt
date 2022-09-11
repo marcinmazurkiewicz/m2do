@@ -21,7 +21,7 @@ class NoteController {
             createdAt = Instant.now(),
             editedAt = Instant.now(),
             readonly = false,
-            state = 1
+            state = NoteState.ACTUAL
         )
         return note
     }
