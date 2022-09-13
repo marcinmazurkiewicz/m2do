@@ -8,4 +8,5 @@ interface NoteRepository {
     fun save(note: Note): Note
 
     fun findById(id: NoteId): Note?
+    fun delete(noteId: NoteId)
 }

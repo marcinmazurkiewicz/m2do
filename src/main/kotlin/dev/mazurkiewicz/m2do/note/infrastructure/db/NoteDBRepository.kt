@@ -20,4 +20,8 @@ class NoteDBRepository : NoteRepository {
     override fun findById(id: NoteId): Note? {
         return repo[id.value]
     }
+
+    override fun delete(noteId: NoteId) {
+        repo.remove(noteId.value)
+    }
 }

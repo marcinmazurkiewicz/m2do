@@ -29,4 +29,26 @@ class ApiNoteService(private val noteService: NoteService) {
         val note = noteService.findNote(NoteId(id))
         return NoteResponse.of(note)
     }
+
+    fun changeState(noteId: Long, request: ChangeNoteStateRequest): NoteResponse {
+        val note =  when (request.state) {
+            NoteState.DONE -> noteService.markDone(NoteId(noteId))
+            NoteState.EXPIRED -> noteService.markExpired(NoteId(noteId))
+            NoteState.ACTUAL -> noteService.markActual(NoteId(noteId))
+        }
+        return NoteResponse.of(note)
+    }
+
+    fun editNote(id: Long, request: ChangeNoteRequest): NoteResponse {
+        val note = noteService.editNote(
+            id = NoteId(id),
+            title = NoteTitle(request.title),
+            content = NoteContent(request.content),
+            type = request.type)
+        return NoteResponse.of(note)
+    }
+
+    fun delete(id: Long) {
+        noteService.delete(NoteId(id))
+    }
 }
