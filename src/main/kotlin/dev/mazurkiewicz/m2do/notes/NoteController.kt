@@ -1,11 +1,8 @@
 package dev.mazurkiewicz.m2do.notes
 
-import jakarta.websocket.server.PathParam
-import org.springframework.http.HttpStatus
+import dev.mazurkiewicz.m2do.notes.domain.model.*
 import org.springframework.web.bind.annotation.*
-import org.springframework.web.service.annotation.HttpExchange
 import java.time.Instant
-import kotlin.random.Random
 
 @RestController
 @RequestMapping("/notes")
@@ -14,13 +11,13 @@ class NoteController(val repository: NoteRepository) {
     @PostMapping
     fun createNote(@RequestBody request: NewNoteRequest): Note {
         val note = Note(
-            id = 0,
-            title = request.title,
-            content = request.content,
+            id =NoteId(0),
+            title = NoteTitle(request.title),
+            content = NoteContent(request.content),
             type = request.type,
-            createdAt = Instant.now(),
-            editedAt = Instant.now(),
-            readonly = false,
+            creationDate = NoteCreationDate(Instant.now()),
+            editDate = NoteEditDate(Instant.now()),
+            readonly = NoteReadWriteOption(false),
             state = NoteState.ACTUAL
         )
         repository.save(note)
@@ -28,7 +25,7 @@ class NoteController(val repository: NoteRepository) {
     }
 
     @GetMapping("/{id}")
-    fun getNoteById(@PathVariable("id") id: Int): NoteResponse {
+    fun getNoteById(@PathVariable("id") id: Long): NoteResponse {
         val note = repository.findById(id)
         if( note != null) {
             return NoteResponse.of(note)
