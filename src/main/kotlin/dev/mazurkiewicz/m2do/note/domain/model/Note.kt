@@ -1,10 +1,7 @@
-package dev.mazurkiewicz.m2do.notes.domain.model
-
-import dev.mazurkiewicz.m2do.notes.NoteState
-import dev.mazurkiewicz.m2do.notes.NoteType
+package dev.mazurkiewicz.m2do.note.domain.model
 
 class Note(
-    var id: NoteId,
+    var id: NoteId?,
     val type: NoteType,
     val title: NoteTitle,
     val content: NoteContent,

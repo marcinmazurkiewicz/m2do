@@ -1,6 +1,8 @@
-package dev.mazurkiewicz.m2do.notes
+package dev.mazurkiewicz.m2do.note.application
 
-import dev.mazurkiewicz.m2do.notes.domain.model.Note
+import dev.mazurkiewicz.m2do.note.domain.model.NoteState
+import dev.mazurkiewicz.m2do.note.domain.model.NoteType
+import dev.mazurkiewicz.m2do.note.domain.model.Note
 import java.time.Instant
 
 class NoteResponse(
@@ -17,7 +19,7 @@ class NoteResponse(
     companion object {
         fun of(note: Note): NoteResponse {
             return NoteResponse(
-                id = note.id.value,
+                id = note.id!!.value,
                 type = note.type,
                 title = note.title.value,
                 content = note.content.value,

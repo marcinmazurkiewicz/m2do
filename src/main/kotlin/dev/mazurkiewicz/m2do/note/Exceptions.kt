@@ -1,4 +1,4 @@
-package dev.mazurkiewicz.m2do.notes
+package dev.mazurkiewicz.m2do.note
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ResponseStatus
